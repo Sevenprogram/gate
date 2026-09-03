@@ -15,7 +15,10 @@ from __future__ import annotations
 import json
 import logging
 import os
-import tomllib
+try:
+    import tomllib
+except ModuleNotFoundError:  # Python < 3.11
+    import tomli as tomllib
 from dataclasses import dataclass, field
 from pathlib import Path
 from zoneinfo import ZoneInfo

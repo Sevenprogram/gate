@@ -27,7 +27,10 @@ import json
 import os
 import sys
 import time
-import tomllib
+try:
+    import tomllib
+except ModuleNotFoundError:  # Python < 3.11
+    import tomli as tomllib
 from dataclasses import dataclass
 from typing import Any
 from datetime import date, datetime, timedelta, timezone
