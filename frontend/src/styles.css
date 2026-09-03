@@ -1,0 +1,239 @@
+/* ============================================================================
+ * 浅色报告工作台。
+ *
+ * 配色（重新调过的浅色阶，不是第一版的灰）：
+ *   页面   #f6f7fb（带一点蓝的浅底，比纯灰干净）
+ *   卡片   #ffffff，6px 圆角，双层柔和投影
+ *   强调   #2563eb 蓝 · 涨 #dc2626 · 跌 #15803d（过校验的组合）
+ *   表头   #f7f8fd 蓝灰底 · 网格线 #eef0f4
+ * ========================================================================= */
+
+body {
+  margin: 0;
+  background: #f6f7fb;
+  color: #1f2937;
+  font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 12.5px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ------------------------------------------------------------------ 面板 */
+
+.ant-card {
+  border: 1px solid #e9ecf3 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.03), 0 2px 8px rgba(16, 24, 40, 0.04) !important;
+}
+.ant-card .ant-card-head {
+  min-height: 36px;
+  padding: 0 14px;
+  border-bottom: 1px solid #eef0f4;
+}
+.ant-card .ant-card-head-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  padding: 6px 0;
+}
+.ant-card .ant-card-extra {
+  font-size: 11px;
+  color: #6b7280;
+  padding: 6px 0;
+}
+.ant-card .ant-card-body {
+  padding: 8px 0;
+}
+
+/* ------------------------------------------------------------------ 表格 */
+
+.ant-table {
+  font-variant-numeric: tabular-nums;
+  border-radius: 0 0 8px 8px;
+}
+.ant-table table {
+  font-family: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, monospace;
+  font-size: 11.5px;
+}
+.ant-table.ant-table-small .ant-table-thead > tr > th {
+  background: #f7f8fd !important;
+  border-bottom: 1px solid #e9ecf3;
+  padding: 7px 10px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #64748b;
+  font-family: system-ui, -apple-system, "PingFang SC", sans-serif;
+  white-space: nowrap;
+  border-right: 1px solid #eef0f4;
+}
+.ant-table.ant-table-small .ant-table-tbody > tr > td {
+  padding: 4px 10px;
+  border-bottom: 1px solid #eef0f4;
+  border-right: 1px solid #f2f3f7;
+  color: #3f4754;
+}
+.ant-table.ant-table-small .ant-table-thead > tr > th:last-child,
+.ant-table.ant-table-small .ant-table-tbody > tr > td:last-child {
+  border-right: none;
+}
+.ant-table-tbody > tr:hover > td {
+  background: #f4f6fd !important;
+}
+.ant-table-tbody > tr > td:first-child {
+  color: #111827;
+}
+.ant-pagination {
+  margin: 8px 12px 2px !important;
+}
+.ant-pagination .ant-pagination-item {
+  min-width: 24px;
+  height: 22px;
+  line-height: 22px;
+  font-size: 11px;
+  border-radius: 4px;
+}
+.ant-pagination .ant-pagination-item-active {
+  border-color: #2563eb;
+}
+.ant-table-filter-trigger {
+  color: #9ca3af;
+}
+
+/* ------------------------------------------------------------------ 顶栏 */
+
+.ant-layout-header {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e9ecf3;
+  box-shadow: 0 1px 4px rgba(16, 24, 40, 0.03);
+}
+
+/* ------------------------------------------------------------------ 标签页 */
+
+/* 顶部 sheet 标签：胶囊 + 蓝色下划线，激活态清晰。 */
+.ant-tabs-tab {
+  margin: 0 4px 0 0 !important;
+  padding: 7px 14px !important;
+  font-size: 12.5px !important;
+  border-radius: 6px 6px 0 0;
+}
+.ant-tabs-tab .ant-tabs-tab-btn {
+  color: #64748b !important;
+}
+.ant-tabs-tab:hover .ant-tabs-tab-btn {
+  color: #334155 !important;
+}
+.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #2563eb !important;
+  font-weight: 600;
+}
+.ant-tabs-ink-bar {
+  background: #2563eb !important;
+  height: 2.5px !important;
+  border-radius: 2px;
+}
+.ant-tabs-nav {
+  margin-bottom: 12px !important;
+}
+.ant-tabs-nav::before {
+  border-bottom-color: #e9ecf3 !important;
+}
+
+/* ------------------------------------------------------------------ 组件 */
+
+.ant-statistic-title {
+  font-size: 10.5px;
+  color: #64748b;
+  margin-bottom: 2px;
+}
+.ant-statistic-content {
+  font-size: 16px;
+  font-family: "SF Mono", ui-monospace, Menlo, monospace;
+}
+
+.ant-alert {
+  border-radius: 6px !important;
+  padding: 7px 12px;
+  font-size: 12px;
+}
+.ant-alert-message {
+  font-size: 12px;
+}
+.ant-alert-description {
+  font-size: 11.5px;
+}
+
+.ant-segmented {
+  background: #eef0f6 !important;
+  border-radius: 6px !important;
+  padding: 2px;
+}
+.ant-segmented .ant-segmented-item {
+  color: #64748b;
+  border-radius: 5px;
+}
+.ant-segmented .ant-segmented-item-selected {
+  color: #2563eb !important;
+  font-weight: 550;
+}
+.ant-segmented .ant-segmented-thumb {
+  background: #ffffff !important;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.12) !important;
+  border-radius: 5px !important;
+}
+.ant-segmented .ant-segmented-item-label {
+  padding: 3px 11px;
+  font-size: 11.5px;
+}
+
+.ant-btn {
+  border-radius: 6px !important;
+  font-size: 12px;
+}
+
+.ant-descriptions.ant-descriptions-small .ant-descriptions-item-label,
+.ant-descriptions.ant-descriptions-small .ant-descriptions-item-content {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.ant-spin .ant-spin-text {
+  color: #64748b;
+}
+
+/* KPI 带数字等宽。 */
+.ant-card .ant-card-body div[style*="flex: 1 1 0"] {
+  font-family: "SF Mono", ui-monospace, Menlo, monospace;
+}
+
+/* ------------------------------------------------------------------ 其它 */
+
+.view-spin-inner > .ant-spin-container {
+  min-height: 200px;
+}
+
+.chart-empty {
+  color: #64748b;
+  text-align: center;
+  padding: 32px 16px;
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cdd3e0 transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #cdd3e0;
+  border-radius: 4px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #b3bcd0;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}

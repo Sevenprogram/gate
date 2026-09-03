@@ -1,0 +1,5 @@
+# pnpm 11 requires an explicit decision per package that ships an install script.
+# esbuild's links the platform-native binary that Vite invokes; without it both
+# the dev server and the production build fail to start.
+allowBuilds:
+  esbuild: true

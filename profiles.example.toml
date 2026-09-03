@@ -1,0 +1,24 @@
+# Multiple API keys — one [[profile]] block per Gate account or sub-account.
+#
+# Copy to profiles.toml (gitignored) and fill in. Every key must be READ-ONLY
+# with trade and withdraw disabled, and ideally bound to your IP.
+#
+# The `id` appears in URLs and is stored in the local database, so pick something
+# short and stable — renaming it later orphans that profile's history.
+#
+# `accounts` is optional; it falls back to GATE_ACCOUNTS from .env.
+# Valid values: spot, futures_usdt, futures_btc, unified
+
+[[profile]]
+id = "main"
+label = "主账户"
+key = ""
+secret = ""
+accounts = ["spot", "futures_usdt"]
+
+[[profile]]
+id = "grid"
+label = "网格子账户"
+key = ""
+secret = ""
+accounts = ["futures_usdt"]

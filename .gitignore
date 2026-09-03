@@ -1,0 +1,28 @@
+# ---- 密钥（绝不能提交）----
+.env
+profiles.toml
+
+# ---- 本地数据（含你的交易历史，且每台机器各自累积）----
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+
+# ---- 生成的报告 ----
+*.xlsx
+
+# ---- Python ----
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# ---- Node / 前端 ----
+node_modules/
+frontend/dist/
+*.local
+
+# ---- 编辑器 / 系统 ----
+.idea/
+.vscode/
+.DS_Store

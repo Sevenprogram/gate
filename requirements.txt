@@ -1,0 +1,3 @@
+# 部署用：指向后端完整依赖（含 openpyxl，报告生成/解析需要）。
+# 用法：pip install -r requirements.txt
+-r backend/requirements.txt
