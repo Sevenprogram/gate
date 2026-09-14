@@ -124,7 +124,12 @@ async def sync_ledger(
     client: GateClient, db: Database, profile: str, start: int, end: int
 ) -> dict[str, int]:
     rows = await client.paginate_by_time(
-        "/spot/account_book", start=start, end=end, time_field="time"
+        # The spot account book rejects any single from/to span over ~30 days.
+        "/spot/account_book",
+        start=start,
+        end=end,
+        time_field="time",
+        window_days=30,
     )
 
     ledger_batch: list[tuple[Any, ...]] = []

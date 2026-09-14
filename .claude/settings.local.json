@@ -128,7 +128,8 @@
       "Bash(awk 'NR>=334 && NR<=338 {print NR\": \"substr\\($0,80,60\\)}' src/views.tsx)",
       "Bash(awk 'NR>=333 && NR<=341 {print NR\": [\"substr\\($0,80,80\\)\"]\"}' src/views.tsx)",
       "Bash(awk 'NR>=600 && NR<=640' src/views.tsx)",
-      "Bash(git check-ignore *)"
+      "Bash(git check-ignore *)",
+      "Bash(grep -rn \"basic_auth\\\\|htpasswd\\\\|auth\" /etc/nginx/ 2>/dev/null | head; echo \"---\"; ls /etc/nginx/sites-enabled/ 2>/dev/null)"
     ]
   }
 }

@@ -171,6 +171,7 @@ class GateClient:
         limit: int = 1000,
         time_field: str = "time",
         max_pages: int = 60,
+        window_days: int = 0,
     ) -> list[dict[str, Any]]:
         """Walk a time-ranged history endpoint backwards from `end` to `start`.
 
@@ -178,7 +179,45 @@ class GateClient:
         get slow, so we shrink the `to` bound instead: each page asks for the
         newest `limit` records at or before the oldest record we've already seen.
         Both bounds are unix seconds.
+
+        window_days > 0 slices the whole range into windows of at most that many
+        days: some endpoints (the spot account book among them) reject any single
+        from/to span longer than ~30 days with INVALID_PARAM_VALUE.
         """
+        if window_days <= 0:
+            return await self._paginate_by_time_window(
+                endpoint, start=start, end=end, params=params,
+                limit=limit, time_field=time_field, max_pages=max_pages,
+            )
+
+        collected: list[dict[str, Any]] = []
+        seen: set[str] = set()
+        slice_start = start
+        while slice_start < end:
+            slice_end = min(slice_start + window_days * 86400, end)
+            rows = await self._paginate_by_time_window(
+                endpoint, start=slice_start, end=slice_end, params=params,
+                limit=limit, time_field=time_field, max_pages=max_pages,
+            )
+            for row in rows:
+                key = _row_key(row)
+                if key not in seen:
+                    seen.add(key)
+                    collected.append(row)
+            slice_start = slice_end
+        return collected
+
+    async def _paginate_by_time_window(
+        self,
+        endpoint: str,
+        *,
+        start: int,
+        end: int,
+        params: dict[str, Any] | None = None,
+        limit: int = 1000,
+        time_field: str = "time",
+        max_pages: int = 60,
+    ) -> list[dict[str, Any]]:
         collected: list[dict[str, Any]] = []
         seen: set[str] = set()
         cursor = end
